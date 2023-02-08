@@ -1,0 +1,16 @@
+ 
+on: [push, workflow_dispatch]
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    name: "📦 Trigger Project Test"
+    steps:
+    - uses: PasseiDireto/trigger-external-workflow-action@v1.0.0
+      env:
+        PAYLOAD_AUTHOR: ${{ github.author }}
+        PAYLOAD_REVISION: "3"
+      with:
+        repository: JamiEmersonUTS/Selenium-Trigger2
+        event: doc_update
+        github_pat: ${{ secrets.ACTIONS_KEY }}
+        
